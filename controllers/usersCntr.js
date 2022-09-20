@@ -2,7 +2,6 @@ const { ObjectId } = require("mongoose").Types;
 const { User } = require("../models");
 
 // get total num of users
-
 const totalUsers = async () =>
     User.aggregate().count("userCount").then((allUsers) => allUsers);
 
@@ -26,11 +25,11 @@ module.exports = {
     //get single user
     getSingleUser(req, res) {
          User.findOne({ _id: req.params.userId })
-           .select("=======")
-           .then(async (user) => 
-           !user 
-           ? res.status(404).json({ message: "User not found." }) 
-           : res.json(user)
+           .select("-__v")
+           .then(async (user) =>
+             !user
+               ? res.status(404).json({ message: "User not found." })
+               : res.json(user)
            )
            .catch((err) => {
              console.log(err);

@@ -37,6 +37,18 @@ module.exports = {
       });      
 },
 // create new thought
+createThought(req, res) {
+    Thought.create(req.body)
+            .then(dbThought => {
+                return User.findOneAndUpdate(
+                    { username: req.body.username },
+                    { $push: { thoughts: dbThought._id } },
+                    { new: true });
+            })
+            .then((thought) => res.json(thought))
+            .catch((err) => res.status(500).json(err));
+},
+// update thought
  updateThought(req,res) {
     Thought.findOneAndUpdate(
             { _id: req.params.thoughtId },
