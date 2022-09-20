@@ -24,8 +24,10 @@ module.exports = {
  getSingleThought(req,res) {
     Thought.findOne({ _id: req.params.thoughtId })
       .select("-__v")
-      .then(async (thought) => !thought ? res.status(404).json({ message: "Thought not found." })
-          : res.json({
+      .then(async (thought) => 
+      !thought 
+      ? res.status(404).json({ message: "Thought not found." })
+      : res.json({
               thought,
             })
       )
@@ -41,8 +43,10 @@ module.exports = {
             { $set: req.body },
             { runValidators: true, new: true }
         )
-            .then((thought) => !thought ? res.status(404).json({ message: 'Thought not found.' })
-                    : res.json(thought)
+            .then((thought) => 
+            !thought 
+            ? res.status(404).json({ message: 'Thought not found.' })
+             : res.json(thought)
             )
             .catch((err) => res.status(500).json(err));
 },
@@ -59,8 +63,10 @@ module.exports = {
             { $addToSet: { reactions: req.body } },
             { runValidators: true, new: true }
         )
-            .then((thought) => !thought ? res.status(404).json({ message: 'Thought not found.' })
-                    : res.json(thought)
+            .then((thought) => 
+            !thought 
+            ? res.status(404).json({ message: 'Thought not found.' })
+            : res.json(thought)
             )
             .catch((err) => res.status(500).json(err));
   },
@@ -71,8 +77,10 @@ module.exports = {
            { runValidators: true, new: true }
          )
            .then((thought) => {
-             console.log(thought); !thought ? res.status(404).json({ message: "Thought not found." })
-               : res.json(thought);
+             console.log(thought); 
+             !thought 
+             ? res.status(404).json({ message: "Thought not found." })
+              : res.json(thought);
            })
            .catch((err) => res.status(500).json(err));
    }
