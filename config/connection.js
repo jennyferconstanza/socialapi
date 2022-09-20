@@ -4,7 +4,8 @@ const connectionString =
 process.env.MONGODB_URI || '';
 
 connect(connectionString, {
- useNewURL: true,
+    useNewURL: true,
     useUnified: true,
 });
+
 module.exports = connection;
