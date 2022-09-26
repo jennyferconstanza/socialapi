@@ -8,7 +8,7 @@ const {
     createReaction,
     deleteReaction
 } = require('../../controllers/thoughtsCntr');
-const { create } = require("../../models/user");
+const { create } = require("../../models/User");
 // GET for all thoughts
 router.route("/").get(getThoughts);
 // GET single thought by id
