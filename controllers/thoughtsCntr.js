@@ -1,4 +1,4 @@
-const { ObjectId } = require("mongoose").Types;
+
 const { Thought, User } = require("../models");
 // functions gets # of thoughts
 const numThoughts = async () =>
