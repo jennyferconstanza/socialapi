@@ -11,12 +11,17 @@ const {
 } = require("../../controllers/usersCntr");
 
 // GETS all users
-router.route("/").get(getUsers).post(createUser);
+router.route("/").get(getUsers);
+router.route("/").post(createUser);
 
 // get user, update user, delete user
-router.route("/:id").get(getSingleUser).put(updateUser).delete(deleteUser);
+router.route("/:userId").get(getSingleUser);
+
+router.route("/:userId").put(updateUser);
+router.route("/:userId").delete(deleteUser);
 
 // add friend, delete friend
-router.route("/:id/friends/:friendId").put(createFriend).delete(deleteFriend);
+router.route("/:userid/friends/:friendId").put(createFriend);
+router.route("/:userid/friends/:friendId").delete(deleteFriend);
 
 module.exports = router;

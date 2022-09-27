@@ -12,13 +12,12 @@ const {
 // GET for all thoughts
 router.route("/").get(getThoughts);
 // GET single thought by id, update thought, delete thought
-router.route("/:id")
-  .get(getSingleThought)
-  .put(updateThought)
-  .delete(deleteThought); 
+router.route("/:thoughtId").get(getSingleThought);
+router.route("/:thoughtId").put(updateThought);
+router.route("/:thoughtId").delete(deleteThought); 
 
 // create thought 
-router.route("/:userId").post(createThought);
+router.route("/").post(createThought);
 // post reaction 
 router.route("/:thoughtId/reactions").post(createReaction);
 

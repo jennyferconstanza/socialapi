@@ -70,7 +70,7 @@ module.exports = {
   deleteThought(req, res) {
     Thought.findOneAndDelete({ _id: req.params.thoughtId })
       .then(() =>
-        res.status(200).json({ message: "User deleted successfully" })
+        res.status(200).json({ message: "Thought deleted successfully" })
       )
       .catch((err) => res.status(500).json(err));
   },
